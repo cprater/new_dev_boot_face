@@ -25,6 +25,12 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
+  <div><%= form_for @user, :url => users_path, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :avatar %>
+  <% end %></div>
+
+  <%= image_tag @user.avatar.url(:thumb) %>
+
   <div><%= f.submit "Update" %></div>
 <% end %>
 
