@@ -1,5 +1,8 @@
 <div class="col-xs-12 col-md-8">
-  <h2><%= current_user.first_name %>'s Profile</h2>
+
+	<%= image_tag @user.avatar.url(:medium) %>
+	
+  <p><h2><%= current_user.first_name %>'s Profile</h2></p>
 </div>
 
 
