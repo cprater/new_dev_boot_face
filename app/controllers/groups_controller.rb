@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
 
 	def create
 		@group = Group.new(group_params)
+		current_user.groups << @group
+		# binding.pry
 		if @group.save
 			redirect_to groups_path
 		else
@@ -34,10 +36,16 @@ class GroupsController < ApplicationController
 		end		
 	end
 
+	def destroy
+		@group = Group.where(id: params[:id]).first
+		@group.destroy
+		redirect_to groups_path
+	end
+
 private
 
 	def group_params
-		params.require(:group).permit(:name, :description)
+		params.require(:group).permit(:name, :description, :created_by)
 	end
 
 end
