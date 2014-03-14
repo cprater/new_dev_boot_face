@@ -657,3 +657,345 @@ Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (0.6ms)
   Rendered partials/_social.html.erb (0.0ms)
 Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (43.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (5.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140312193500)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (37.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (6.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140312193500"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20140312204624)
+  [1m[35m (6.3ms)[0m  BEGIN
+  [1m[36m (14.9ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "content" text, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140312204624"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20140313145434)
+  [1m[35m (6.3ms)[0m  BEGIN
+  [1m[36m (16.6ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "user_id" integer, "commentable_id" integer, "commentable_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140313145434"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGroups (20140313190408)
+  [1m[35m (5.6ms)[0m  BEGIN
+  [1m[36m (15.5ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140313190408"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGroupsUsers (20140313190851)
+  [1m[35m (5.7ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "groups_users" ("group_id" integer, "user_id" integer) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140313190851"]]
+  [1m[36m (5.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-14 14:53:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (7.4ms)
+  Rendered partials/_social.html.erb (0.4ms)
+Completed 200 OK in 489ms (Views: 472.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 14:53:04 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-14 14:53:04 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 14:53:04 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 14:53:04 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 14:53:04 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-03-14 14:54:42 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.9ms)
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 63ms (Views: 54.8ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WFLxbQiM/LrbbufzxpFdrh7Y9D2do5iqcjJzF3szxpw=", "user"=>{"first_name"=>"dustin", "last_name"=>"fox", "email"=>"d@f.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (14.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'd@f.com' LIMIT 1[0m
+  [1m[35mSQL (47.6ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Fri, 14 Mar 2014 19:55:32 UTC +00:00], ["email", "d@f.com"], ["encrypted_password", "$2a$10$5dtTgBxG/0/U4IpchK7S7.KONM1gOTJV2X1ZX0WgoT0QyYMuuxs9C"], ["first_name", "dustin"], ["last_name", "fox"], ["updated_at", Fri, 14 Mar 2014 19:55:32 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 1[0m  [["last_sign_in_at", Fri, 14 Mar 2014 19:55:32 UTC +00:00], ["current_sign_in_at", Fri, 14 Mar 2014 19:55:32 UTC +00:00], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", Fri, 14 Mar 2014 19:55:32 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 177ms (ActiveRecord: 64.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (5.1ms)
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:32 -0500
+
+
+Started GET "/groups" for 127.0.0.1 at 2014-03-14 14:55:39 -0500
+Processing by GroupsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.3ms)
+Completed 200 OK in 22ms (Views: 12.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups" for 127.0.0.1 at 2014-03-14 14:55:44 -0500
+Processing by GroupsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2014-03-14 14:55:45 -0500
+Processing by GroupsController#new as HTML
+  Rendered groups/new.html.erb within layouts/application (15.1ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 26.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/groups" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WFLxbQiM/LrbbufzxpFdrh7Y9D2do5iqcjJzF3szxpw=", "group"=>{"name"=>"This is a group", "description"=>"This is a group description"}, "commit"=>"Create Group"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "groups" ("created_at", "description", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Fri, 14 Mar 2014 19:55:58 UTC +00:00], ["description", "This is a group description"], ["name", "This is a group"], ["updated_at", Fri, 14 Mar 2014 19:55:58 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 7ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/groups" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+Processing by GroupsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "groups"
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (3.3ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 14:55:58 -0500
+
+
+Started GET "/groups" for 127.0.0.1 at 2014-03-14 14:56:11 -0500
+Processing by GroupsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "groups"[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups"
+  Rendered groups/index.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/groups" for 127.0.0.1 at 2014-03-14 14:56:33 -0500
+Processing by GroupsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "groups"
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  Rendered groups/index.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.9ms)
+  [1m[36mGroup Load (1.8ms)[0m  [1mSELECT "groups".* FROM "groups"[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mGroup Load (2.6ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "groups_users" ON "groups"."id" = "groups_users"."group_id" WHERE "groups_users"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+DEPRECATION WARNING: Relation#all is deprecated. If you want to eager-load a relation, you can call #load (e.g. `Post.where(published: true).load`). If you want to get an array of records from a relation, you can call #to_a (e.g. `Post.where(published: true).to_a`). (called from irb_binding at (irb):4)
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "groups_users" ON "groups"."id" = "groups_users"."group_id" WHERE "groups_users"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mGroup Load (0.9ms)[0m  [1mSELECT "groups".* FROM "groups" INNER JOIN "groups_users" ON "groups"."id" = "groups_users"."group_id" WHERE "groups_users"."user_id" = $1 ORDER BY "groups"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2014-03-14 15:03:24 -0500
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGroup Load (0.6ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."id" = 1 ORDER BY "groups"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" INNER JOIN "groups_users" ON "users"."id" = "groups_users"."user_id" WHERE "groups_users"."group_id" = $1  [["group_id", 1]]
+  Rendered groups/show.html.erb within layouts/application (78.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 90ms (Views: 84.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-03-14 15:03:30 -0500
+Processing by PostsController#index as HTML
+  [1m[35m (7.7ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (13.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 15.7ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-03-14 15:03:31 -0500
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (8.1ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WFLxbQiM/LrbbufzxpFdrh7Y9D2do5iqcjJzF3szxpw=", "post"=>{"content"=>"This is a post"}, "commit"=>"Create Post"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "posts" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["content", "This is a post"], ["created_at", Fri, 14 Mar 2014 20:03:36 UTC +00:00], ["updated_at", Fri, 14 Mar 2014 20:03:36 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "posts" SET "user_id" = $1, "updated_at" = $2 WHERE "posts"."id" = 1  [["user_id", 1], ["updated_at", Fri, 14 Mar 2014 20:03:36 UTC +00:00]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 21ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (9.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 15:03:36 -0500
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2014-03-14 15:04:00 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 ORDER BY "posts"."id" ASC LIMIT 1
+  [1m[36mComment Load (7.0ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = $1 AND "comments"."commentable_type" = $2[0m  [["commentable_id", 1], ["commentable_type", "Post"]]
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. (called from _app_views_posts_show_html_erb__157529797377205135_70366640395580 at /Users/dustincfox/dev_boot_face/app/views/posts/show.html.erb:13)
+  Rendered posts/show.html.erb within layouts/application (16.9ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 32ms (Views: 19.4ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2014-03-14 15:04:04 -0500
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WFLxbQiM/LrbbufzxpFdrh7Y9D2do5iqcjJzF3szxpw=", "post"=>{"content"=>"Why is this the smaller font?"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("content", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["content", "Why is this the smaller font?"], ["created_at", Fri, 14 Mar 2014 20:04:15 UTC +00:00], ["updated_at", Fri, 14 Mar 2014 20:04:15 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "posts" SET "user_id" = $1, "updated_at" = $2 WHERE "posts"."id" = 2[0m  [["user_id", 1], ["updated_at", Fri, 14 Mar 2014 20:04:15 UTC +00:00]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 11ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered partials/_social.html.erb (0.1ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 15:04:15 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2014-03-14 15:06:54 -0500
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (75.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
+  Rendered partials/_social.html.erb (0.0ms)
+Completed 200 OK in 89ms (Views: 77.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-14 15:06:55 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-14 15:06:55 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-14 15:06:55 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-14 15:06:55 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-14 15:06:55 -0500
