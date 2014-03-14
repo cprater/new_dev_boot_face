@@ -1,10 +1,10 @@
 <p><strong>User: </strong>
 	<%= @post.user_id %></p>
 <p><strong>Post: </strong>
-	<%= @post.content %></p>
+	<%= raw Rinku.auto_link(@post.content) %></p>
 <p><strong>Comments:</strong> </p>
 <% @post.comments.each do |comment| %>
-  <p> <%= comment.content %> </p>
+  <p> <%= raw Rinku.auto_link(comment.content) %> </p>
 <% end %>
 
 <p><%= link_to 'Add Comment', new_post_comment_path(@post.id) %></p>

@@ -36,7 +36,7 @@ gem 'rails_autolink'
 gem 'rinku'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
-
+gem "paperclip", "~> 4.1"
 # Use unicorn as the app server
 # gem 'unicorn'
 
