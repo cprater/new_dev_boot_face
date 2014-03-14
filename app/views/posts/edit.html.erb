@@ -1,0 +1,18 @@
+
+
+<h1> Edit Post </h1>
+
+<p> Hi there</p>
+<p>Edit your post, filthy animal</p>
+
+<%= form_for @post do |f| %>
+<p>
+	<%= f.label :content %>
+	<%= f.text_area :content %> 
+</p>
+<%= f.submit %>
+<% end %>
+<br>
+
+
+<%= link_to 'Back', posts_path %>

@@ -1,0 +1,12 @@
+<p><strong>Group Name: </strong>
+	<%= @group.name %></p>
+<p><strong>Description: </strong>
+	<%= @group.description %></p>
+<p><strong>Members: </strong></p>
+	<% @group.users.each do |user| %>
+		<p><%= user.id %></p>
+	<% end %>
+
+<p><%= link_to 'New Group Post', new_group_path(@group.id) %></p>
+<%= link_to 'Back', groups_path %>
+<%= link_to 'Edit', edit_group_path(@group) %>

@@ -1,0 +1,13 @@
+<%= form_for @group do |f| %>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_area :name %>
+	</p>
+		<%= f.label :description %><br>
+		<%= f.text_area :description %>
+	<p>
+
+		<%= f.hidden_field :created_by, :value => current_user.id %>
+		<%= f.submit %>
+	</p>
+<% end %>	
