@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
 
-  has_and_belongs_to_many :users
+	belongs_to :user
+  has_many :groups_users
+  has_many :users, through: :groups_users
+  belongs_to :creator, class_name: :user, foreign_key: :created_by
   has_many :posts
 
 end
