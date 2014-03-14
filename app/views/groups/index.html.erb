@@ -1,0 +1,12 @@
+
+<h1>Groups Home</h1>
+<%= link_to 'Home', posts_path %>
+
+<%= link_to 'New Group', new_group_path %>
+	<% if @groups.any? %>
+  <% @groups.each do |group| %>
+    <h4><%= link_to group.name, group_path(group) %></h4>
+    <%= group.description %>
+    <hr>
+  <% end %>
+<% end %>

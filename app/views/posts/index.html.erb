@@ -1,0 +1,12 @@
+
+<h1>Posts Home</h1>
+<%= link_to 'Groups', groups_path %>
+
+<%= link_to 'New Post', new_post_path %>
+	<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h4><%= link_to post.user.first_name, post_path(post) %></h4>
+    <%= raw Rinku.auto_link(post.content) %>
+    <hr>
+  <% end %>
+<% end %>
