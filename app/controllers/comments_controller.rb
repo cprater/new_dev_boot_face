@@ -14,6 +14,28 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.where(id: params[:id]).first
+  end
+
+  def show
+    @comment = Comment.where(id: params[:id]).first
+  end
+
+  def update
+    @comment = Comment.where(id: params[:id]).first
+    if @comment.update(params[:comment].permit(:content))
+      redirect_to post_path(@comment_id)
+    else
+      render 'edit'
+    end   
+  end
+
+  def destroy
+    Comment.delete(params[:id])
+    redirect_to posts_path
+  end
+
   private
 
   def comment_params

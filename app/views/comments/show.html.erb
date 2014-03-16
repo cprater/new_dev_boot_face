@@ -1,0 +1,9 @@
+<p><strong>User: </strong>
+	<%= @comment.user.first_name %> <%= @comment.user.last_name %></p>
+<p><strong>Comment: </strong>
+	<%= @comment.content %></p>
+
+
+<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_comment_path(@comment) %>
+<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %>

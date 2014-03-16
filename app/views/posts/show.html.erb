@@ -1,10 +1,11 @@
 <p><strong>User: </strong>
-	<%= @post.user_id %></p>
+	<%= @post.user.first_name %> <%= @post.user.last_name %></p>
 <p><strong>Post: </strong>
 	<%= @post.content %></p>
 <p><strong>Comments:</strong> </p>
 <% @post.comments.each do |comment| %>
-  <p> <%= comment.content %> </p>
+  <p><a href="/posts/<%= @post.id %>/comments/<%= comment.id %>"> 
+  	 <%= comment.id %>.</a> <%= comment.content %></p>
 <% end %>
 
 <p><%= link_to 'Add Comment', new_post_comment_path(@post.id) %></p>
