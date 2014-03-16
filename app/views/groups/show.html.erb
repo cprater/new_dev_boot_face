@@ -7,6 +7,7 @@
 		<p><%= user.id %></p>
 	<% end %>
 
+<%= link_to "Join Group", new_group_user_path(@group.id) %>
 <p><%= link_to 'New Group Post', new_group_path(@group.id) %></p>
 <%= link_to 'Back', groups_path %>
 <%= link_to 'Edit', edit_group_path(@group) %>
