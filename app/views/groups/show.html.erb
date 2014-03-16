@@ -4,8 +4,12 @@
 	<%= @group.description %></p>
 <p><strong>Members: </strong></p>
 	<% @group.users.each do |user| %>
-		<p><%= user.id %></p>
+		<p><%= user.first_name %></p>
 	<% end %>
+
+<% unless @group.users.where(id: current_user.id).first%>
+	<%= link_to "Join Group", new_group_user_path(@group.id) %>
+<%end%>
 
 <p><%= link_to 'New Group Post', new_group_path(@group.id) %></p>
 <%= link_to 'Back', groups_path %>
