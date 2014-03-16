@@ -1,0 +1,15 @@
+<h1> Edit Comment </h1>
+
+<p>Edit Your Comment</p>
+
+<%= form_for @comment do |f| %>
+<p>
+	<%= f.label :content %>
+	<%= f.text_area :content %> 
+</p>
+<%= f.submit %>
+<% end %>
+<br>
+
+
+<%= link_to 'Back', posts_path %>
