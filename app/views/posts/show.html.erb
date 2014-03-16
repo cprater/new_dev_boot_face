@@ -4,8 +4,11 @@
 	<%= @post.content %></p>
 <p><strong>Comments:</strong> </p>
 <% @post.comments.order('id').each do |comment| %>
-  <p><a href="/posts/<%= @post.id %>/comments/<%= comment.id %>"> 
-  	 <%= comment.id %>.</a> <%= comment.content %></p>
+  <p><%= link_to "#{comment.user.full_name}", user_path %>
+  <%= comment.content %> 
+  <% if current_user.id == comment.user_id%>
+  	<%= link_to "Edit", edit_comment_path(comment)%>
+  <%end%></p>
 <% end %>
 
 <p><%= link_to 'Add Comment', new_post_comment_path(@post.id) %></p>
