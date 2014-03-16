@@ -3,7 +3,7 @@
 <p><strong>Post: </strong>
 	<%= @post.content %></p>
 <p><strong>Comments:</strong> </p>
-<% @post.comments.each do |comment| %>
+<% @post.comments.order('id').each do |comment| %>
   <p><a href="/posts/<%= @post.id %>/comments/<%= comment.id %>"> 
   	 <%= comment.id %>.</a> <%= comment.content %></p>
 <% end %>
