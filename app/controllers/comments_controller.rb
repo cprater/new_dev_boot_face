@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.where(id: params[:id]).first
     if @comment.update(params[:comment].permit(:content))
-      redirect_to post_path(@comment.id)
+      redirect_to post_path(session[:current_post])
     else
       render 'edit'
     end   

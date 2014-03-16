@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
   def show
 		@post = Post.where(id: params[:id]).first
+		session[:current_post] = @post.id
 	end
 
 	def edit
